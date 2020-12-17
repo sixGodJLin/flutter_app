@@ -4,7 +4,6 @@ class MyAppBar extends StatelessWidget {
   MyAppBar({this.title});
 
   // Widget子类中的字段往往都会定义为"final"
-
   final Widget title;
 
   @override
