@@ -24,11 +24,7 @@ class MyApp extends StatelessWidget {
               )
             ],
           )),
-          new Icon(
-            Icons.star,
-            color: Colors.red[500],
-          ),
-          new Text('41')
+          new FavoriteWidget()
         ],
       ),
     );
@@ -109,10 +105,43 @@ class FavoriteWidget extends StatefulWidget {
 }
 
 class _FavoriteWidgetState extends State<FavoriteWidget> {
+  bool _isFavorited = true;
+  int _favoriteCount = 41;
+
+  void _toggleFavorite() {
+    setState(() {
+      if (_isFavorited) {
+        _isFavorited = false;
+        _favoriteCount -= 1;
+      } else {
+        _isFavorited = true;
+        _favoriteCount += 1;
+      }
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
-    // TODO: implement build
-    throw UnimplementedError();
+    return new Row(
+      mainAxisSize: MainAxisSize.min,
+      children: [
+        new Container(
+          padding: const EdgeInsets.all(1.0),
+          child: new IconButton(
+              icon: _isFavorited
+                  ? new Icon(Icons.star)
+                  : new Icon(Icons.star_border),
+              color: Colors.red[500],
+              onPressed: _toggleFavorite),
+        ),
+        new SizedBox(
+          width: 18.0,
+          child: new Container(
+            child: new Text('$_favoriteCount'),
+          ),
+        )
+      ],
+    );
   }
 }
 
