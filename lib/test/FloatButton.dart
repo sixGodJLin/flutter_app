@@ -25,7 +25,7 @@ class TestWidgetState extends State<TestWidget> {
       ),
       floatingActionButton: new FloatingActionButton(
         onPressed: click,
-        child: new Icon(Icons.upgrade),
+        child: new Icon(Icons.add),
       ),
     );
   }
