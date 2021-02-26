@@ -1,5 +1,6 @@
 import 'package:english_words/english_words.dart';
 import 'package:flutter/material.dart';
+import 'package:flutterapp/test/CustomScrollViewDemo.dart';
 
 void main() {
   runApp(new MyApp());
@@ -15,10 +16,10 @@ class MyApp extends StatelessWidget {
       ),
       routes: {
         "new_page": (context) {
-          return TipRoute(text: ModalRoute
-              .of(context)
-              .settings
-              .arguments);
+          return TipRoute(text: ModalRoute.of(context).settings.arguments);
+        },
+        "custom_scroll": (context) {
+          return CustomScrollViewTestRouter();
         },
         "/": (context) => MyCount(title: "Router Demo")
       },
@@ -54,15 +55,20 @@ class _MyCountState extends State<MyCount> {
           children: [
             new Text('你可以点击按钮多次'),
             new Text('count: $count',
-                style: Theme
-                    .of(context)
-                    .textTheme
-                    .headline4),
+                style: Theme.of(context).textTheme.headline4),
             new RaisedButton(
               onPressed: () {
                 Navigator.of(context).pushNamed("new_page", arguments: "JLin");
               },
               child: new Text('打卡提示页'),
+              textColor: Colors.blue,
+            ),
+            new RaisedButton(
+              onPressed: () {
+                Navigator.of(context)
+                    .pushNamed("custom_scroll", arguments: "JLin");
+              },
+              child: new Text('打开SustomScroll页面'),
               textColor: Colors.blue,
             ),
             new RandomWord()
@@ -99,10 +105,7 @@ class TipRoute extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    var args = ModalRoute
-        .of(context)
-        .settings
-        .arguments;
+    var args = ModalRoute.of(context).settings.arguments;
     print(args);
     return new Scaffold(
       appBar: new AppBar(
@@ -130,7 +133,6 @@ class RandomWord extends StatelessWidget {
   Widget build(BuildContext context) {
     final wordPair = new WordPair.random();
     return Padding(
-        padding: EdgeInsets.all(8),
-        child: new Text(wordPair.toString()));
+        padding: EdgeInsets.all(8), child: new Text(wordPair.toString()));
   }
 }
