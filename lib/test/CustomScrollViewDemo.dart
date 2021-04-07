@@ -10,6 +10,7 @@ class CustomScrollViewTestRouter extends StatelessWidget {
             pinned: true,
             expandedHeight: 250.0,
             flexibleSpace: FlexibleSpaceBar(
+
               title: const Text('Demo'),
               background: Image.asset("./images/lakes.png", fit: BoxFit.cover),
             ),
