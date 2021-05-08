@@ -1,6 +1,7 @@
 import 'package:english_words/english_words.dart';
 import 'package:flutter/material.dart';
 import 'package:flutterapp/test/CustomScrollViewDemo.dart';
+import 'package:flutterapp/test/ScrollControlDemo.dart';
 
 void main() {
   runApp(new MyApp());
@@ -20,6 +21,9 @@ class MyApp extends StatelessWidget {
         },
         "custom_scroll": (context) {
           return CustomScrollViewTestRouter();
+        },
+        "scroll_control": (context) {
+          return ScrollControllerTestRoute();
         },
         "/": (context) => MyCount(title: "Router Demo")
       },
@@ -69,6 +73,14 @@ class _MyCountState extends State<MyCount> {
                     .pushNamed("custom_scroll", arguments: "JLin");
               },
               child: new Text('打开SustomScroll页面'),
+              textColor: Colors.blue,
+            ),
+            new RaisedButton(
+              onPressed: () {
+                Navigator.of(context)
+                    .pushNamed("scroll_control");
+              },
+              child: new Text('打开ScrollControl页面'),
               textColor: Colors.blue,
             ),
             new RandomWord()

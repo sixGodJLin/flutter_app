@@ -8,7 +8,9 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return new MaterialApp(
-        theme: ThemeData(primaryColor: Colors.blue), home: MyHome());
+      theme: ThemeData(primaryColor: Colors.blue),
+      home: MyHome(),
+    );
   }
 }
 
@@ -25,41 +27,21 @@ class MyHome extends StatelessWidget {
 class GridView1 extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return GridView(
-      gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-          crossAxisCount: 3, childAspectRatio: 1),
-      children: [
-        Icon(Icons.ac_unit),
-        Icon(Icons.airport_shuttle),
-        Icon(Icons.all_inclusive),
-        Icon(Icons.beach_access),
-        Icon(Icons.cake),
-        Icon(Icons.free_breakfast)
-      ],
-    );
-  }
-//GridView.count(
-//crossAxisCount: 3,
-//childAspectRatio: 1.0,
-//children: <Widget>[
-//Icon(Icons.ac_unit),
-//Icon(Icons.airport_shuttle),
-//Icon(Icons.all_inclusive),
-//Icon(Icons.beach_access),
-//Icon(Icons.cake),
-//Icon(Icons.free_breakfast),
-//],
-//);
-}
-
-class GridView2 extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return GridView(
-      padding: EdgeInsets.zero,
-      gridDelegate: SliverGridDelegateWithMaxCrossAxisExtent(
-          maxCrossAxisExtent: 120.0, childAspectRatio: 2.0 //宽⾼⽐为2
-          ),
+    // return GridView(
+    //   gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+    //       crossAxisCount: 3, childAspectRatio: 1),
+    //   children: [
+    //     Icon(Icons.ac_unit),
+    //     Icon(Icons.airport_shuttle),
+    //     Icon(Icons.all_inclusive),
+    //     Icon(Icons.beach_access),
+    //     Icon(Icons.cake),
+    //     Icon(Icons.free_breakfast)
+    //   ],
+    // );
+    return GridView.count(
+      crossAxisCount: 3,
+      childAspectRatio: 1.0,
       children: <Widget>[
         Icon(Icons.ac_unit),
         Icon(Icons.airport_shuttle),
@@ -70,18 +52,39 @@ class GridView2 extends StatelessWidget {
       ],
     );
   }
-//GridView.extent(
-//maxCrossAxisExtent: 120.0,
-//childAspectRatio: 2.0,
-//children: <Widget>[
-//Icon(Icons.ac_unit),
-//Icon(Icons.airport_shuttle),
-//Icon(Icons.all_inclusive),
-//Icon(Icons.beach_access),
-//Icon(Icons.cake),
-//Icon(Icons.free_breakfast),
-//],
-//)
+}
+
+class GridView2 extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    // return GridView(
+    //   padding: EdgeInsets.zero,
+    //   gridDelegate: SliverGridDelegateWithMaxCrossAxisExtent(
+    //       maxCrossAxisExtent: 120.0, childAspectRatio: 2.0 //宽⾼⽐为2
+    //       ),
+    //   children: <Widget>[
+    //     Icon(Icons.ac_unit),
+    //     Icon(Icons.airport_shuttle),
+    //     Icon(Icons.all_inclusive),
+    //     Icon(Icons.beach_access),
+    //     Icon(Icons.cake),
+    //     Icon(Icons.free_breakfast),
+    //   ],
+    // );
+    return
+      GridView.extent(
+        maxCrossAxisExtent: 120.0,
+        childAspectRatio: 2.0,
+        children: <Widget>[
+          Icon(Icons.ac_unit),
+          Icon(Icons.airport_shuttle),
+          Icon(Icons.all_inclusive),
+          Icon(Icons.beach_access),
+          Icon(Icons.cake),
+          Icon(Icons.free_breakfast),
+        ],
+      );
+  }
 }
 
 class InfiniteGridView extends StatefulWidget {

@@ -22,7 +22,7 @@ class MyHome extends StatelessWidget {
         appBar: AppBar(
           title: Text('ListViewDemo'),
         ),
-        body: ListView4());
+        body: InfiniteListView());
   }
 }
 
@@ -57,9 +57,7 @@ class ListView2 extends StatelessWidget {
 class ListView3 extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    Widget divider1 = Divider(
-      color: Colors.blue,
-    );
+    Widget divider1 = Divider(color: Colors.blue);
     Widget divider2 = Divider(color: Colors.green);
     return ListView.separated(
       itemCount: 100,
@@ -90,35 +88,38 @@ class _InfiniteListViewState extends State<InfiniteListView> {
   @override
   Widget build(BuildContext context) {
     return ListView.separated(
-        itemBuilder: (context, index) {
-          if (_words[index] == loadingTag) {
-            if (_words.length - 1 < 100) {
-              _receiveData();
-              return Container(
-                padding: const EdgeInsets.all(16.0),
-                alignment: Alignment.center,
-                child: SizedBox(
+      itemCount: _words.length,
+      itemBuilder: (context, index) {
+        //如果到了表尾
+        if (_words[index] == loadingTag) {
+          //不足100条，继续获取数据
+          if (_words.length - 1 < 100) {
+            //获取数据
+            _receiveData();
+            //加载时显示loading
+            return Container(
+              padding: const EdgeInsets.all(16.0),
+              alignment: Alignment.center,
+              child: SizedBox(
                   width: 24.0,
                   height: 24.0,
-                  child: CircularProgressIndicator(strokeWidth: 2.0),
-                ),
-              );
-            } else {
-              return Container(
-                  alignment: Alignment.center,
-                  padding: EdgeInsets.all(16.0),
-                  child: Text(
-                    "没有更多了",
-                    style: TextStyle(color: Colors.grey),
-                  ));
-            }
+                  child: CircularProgressIndicator(strokeWidth: 2.0)
+              ),
+            );
           } else {
-            //显示单词列表项
-            return ListTile(title: Text(_words[index]));
+            //已经加载了100条数据，不再获取数据。
+            return Container(
+                alignment: Alignment.center,
+                padding: EdgeInsets.all(16.0),
+                child: Text("没有更多了", style: TextStyle(color: Colors.grey),)
+            );
           }
-        },
-        separatorBuilder: (context, index) => Divider(height: 0.0),
-        itemCount: _words.length);
+        }
+        //显示单词列表项
+        return ListTile(title: Text(_words[index]));
+      },
+      separatorBuilder: (context, index) => Divider(height: .0),
+    );
   }
 
   void _receiveData() {
