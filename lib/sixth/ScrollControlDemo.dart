@@ -36,7 +36,9 @@ class ScrollControllerTestRouteState extends State<ScrollControllerTestRoute> {
           showToTopBtn = false;
         });
       } else if (_controller.offset >= 1000 && showToTopBtn == false) {
-        showToTopBtn = true;
+        setState(() {
+          showToTopBtn = true;
+        });
       }
     });
   }
@@ -70,8 +72,8 @@ class ScrollControllerTestRouteState extends State<ScrollControllerTestRoute> {
           : FloatingActionButton(
               child: new Icon(Icons.arrow_upward),
               onPressed: () {
-                _controller.animateTo(.0,
-                    duration: Duration(milliseconds: 200), curve: Curves.ease);
+                  _controller.animateTo(.0,
+                      duration: Duration(milliseconds: 200), curve: Curves.ease);
               },
             ),
     );

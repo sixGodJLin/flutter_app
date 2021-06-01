@@ -22,7 +22,7 @@ class MyHome extends StatelessWidget {
         appBar: AppBar(
           title: Text('ListViewDemo'),
         ),
-        body: InfiniteListView());
+        body: ListView4());
   }
 }
 

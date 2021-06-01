@@ -1,7 +1,9 @@
 import 'package:english_words/english_words.dart';
 import 'package:flutter/material.dart';
-import 'package:flutterapp/test/CustomScrollViewDemo.dart';
-import 'package:flutterapp/test/ScrollControlDemo.dart';
+import 'package:flutterapp/sixth/CustomScrollViewDemo.dart';
+import 'package:flutterapp/sixth/ScrollControlDemo.dart';
+import 'package:flutterapp/sixth/ScrollNotificationTestRoute.dart';
+import 'package:flutterapp/seventh/WillPopScopeTestRoute.dart';
 
 void main() {
   runApp(new MyApp());
@@ -24,6 +26,12 @@ class MyApp extends StatelessWidget {
         },
         "scroll_control": (context) {
           return ScrollControllerTestRoute();
+        },
+        "scroll_notification": (context) {
+          return ScrollNotificationTestRoute();
+        },
+        "WillPopScopeTest": (context) {
+          return WillPopScopeTestRoute();
         },
         "/": (context) => MyCount(title: "Router Demo")
       },
@@ -81,6 +89,22 @@ class _MyCountState extends State<MyCount> {
                     .pushNamed("scroll_control");
               },
               child: new Text('打开ScrollControl页面'),
+              textColor: Colors.blue,
+            ),
+            new RaisedButton(
+              onPressed: () {
+                Navigator.of(context)
+                    .pushNamed("scroll_notification");
+              },
+              child: new Text('打开ScrollNotificationTest页面'),
+              textColor: Colors.blue,
+            ),
+            new RaisedButton(
+              onPressed: () {
+                Navigator.of(context)
+                    .pushNamed("WillPopScopeTest");
+              },
+              child: new Text('打开WillPopScopeTestRoute页面'),
               textColor: Colors.blue,
             ),
             new RandomWord()
