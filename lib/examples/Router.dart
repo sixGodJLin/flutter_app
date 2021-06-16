@@ -1,5 +1,11 @@
 import 'package:english_words/english_words.dart';
 import 'package:flutter/material.dart';
+import 'package:flutterapp/seventh/DialogTest.dart';
+import 'package:flutterapp/seventh/FutureBuilder.dart';
+import 'package:flutterapp/seventh/InheritedWidget.dart';
+import 'package:flutterapp/seventh/ProviderTestRoute.dart';
+import 'package:flutterapp/seventh/StreamBuilder.dart';
+import 'package:flutterapp/seventh/ThemeRoute.dart';
 import 'package:flutterapp/sixth/CustomScrollViewDemo.dart';
 import 'package:flutterapp/sixth/ScrollControlDemo.dart';
 import 'package:flutterapp/sixth/ScrollNotificationTestRoute.dart';
@@ -32,6 +38,24 @@ class MyApp extends StatelessWidget {
         },
         "WillPopScopeTest": (context) {
           return WillPopScopeTestRoute();
+        },
+        "InheritedWidget": (context) {
+          return InheritedWidgetTestRoute();
+        },
+        "ProviderRoute": (context) {
+          return ProviderRoute();
+        },
+        "ThemeDataRouter": (context) {
+          return ThemeDataRouter();
+        },
+        "FutureRouter": (context) {
+          return FutureRouter();
+        },
+        "StreamBuilderRouter": (context) {
+          return StreamBuilderRouter();
+        },
+        "MyDialogTestRouter": (context) {
+          return MyDialogTestRouter();
         },
         "/": (context) => MyCount(title: "Router Demo")
       },
@@ -85,26 +109,65 @@ class _MyCountState extends State<MyCount> {
             ),
             new RaisedButton(
               onPressed: () {
-                Navigator.of(context)
-                    .pushNamed("scroll_control");
+                Navigator.of(context).pushNamed("scroll_control");
               },
               child: new Text('打开ScrollControl页面'),
               textColor: Colors.blue,
             ),
             new RaisedButton(
               onPressed: () {
-                Navigator.of(context)
-                    .pushNamed("scroll_notification");
+                Navigator.of(context).pushNamed("scroll_notification");
               },
               child: new Text('打开ScrollNotificationTest页面'),
               textColor: Colors.blue,
             ),
             new RaisedButton(
               onPressed: () {
-                Navigator.of(context)
-                    .pushNamed("WillPopScopeTest");
+                Navigator.of(context).pushNamed("WillPopScopeTest");
               },
               child: new Text('打开WillPopScopeTestRoute页面'),
+              textColor: Colors.blue,
+            ),
+            new RaisedButton(
+              onPressed: () {
+                Navigator.of(context).pushNamed("InheritedWidget");
+              },
+              child: new Text('打开InheritedWidgetTestRoute页面'),
+              textColor: Colors.blue,
+            ),
+            new RaisedButton(
+              onPressed: () {
+                Navigator.of(context).pushNamed("ProviderRoute");
+              },
+              child: new Text('打开ProviderRoute页面'),
+              textColor: Colors.blue,
+            ),
+            new RaisedButton(
+              onPressed: () {
+                Navigator.of(context).pushNamed("ThemeDataRouter");
+              },
+              child: new Text('打开ThemeDataRouter页面'),
+              textColor: Colors.blue,
+            ),
+            new RaisedButton(
+              onPressed: () {
+                Navigator.of(context).pushNamed("FutureRouter");
+              },
+              child: new Text('打开FutureRouter页面'),
+              textColor: Colors.blue,
+            ),
+            new RaisedButton(
+              onPressed: () {
+                Navigator.of(context).pushNamed("StreamBuilderRouter");
+              },
+              child: new Text('打开StreamBuilderRouter页面'),
+              textColor: Colors.blue,
+            ),
+            new RaisedButton(
+              onPressed: () {
+                Navigator.of(context).pushNamed("MyDialogTestRouter");
+              },
+              child: new Text('打开MyDialogTestRouter页面'),
               textColor: Colors.blue,
             ),
             new RandomWord()
