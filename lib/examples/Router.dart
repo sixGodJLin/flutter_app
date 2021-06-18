@@ -1,5 +1,6 @@
 import 'package:english_words/english_words.dart';
 import 'package:flutter/material.dart';
+import 'package:flutterapp/examples/EventBus.dart';
 import 'package:flutterapp/seventh/DialogTest.dart';
 import 'package:flutterapp/seventh/FutureBuilder.dart';
 import 'package:flutterapp/seventh/InheritedWidget.dart';
@@ -83,6 +84,12 @@ class _MyCountState extends State<MyCount> {
 
   @override
   Widget build(BuildContext context) {
+    var bus = new EventBus();
+
+    bus.on("eventName", (arg) {
+      print("这是回调");
+    });
+
     return new Scaffold(
       appBar: new AppBar(title: new Text(widget.title)),
       body: new Center(
@@ -198,6 +205,7 @@ class MyRouter extends StatelessWidget {
 }
 
 class TipRoute extends StatelessWidget {
+  var bus = new EventBus();
   final String text;
 
   TipRoute({Key key, @required this.text}) : super(key: key);
@@ -214,10 +222,14 @@ class TipRoute extends StatelessWidget {
         padding: EdgeInsets.all(18),
         child: new Center(
           child: new Column(
+            crossAxisAlignment: CrossAxisAlignment.center,
             children: [
               new Text(text),
               RaisedButton(
-                  onPressed: () => Navigator.pop(context, "我是返回值"),
+                  onPressed: () => {
+                        bus.emit("eventName"),
+                        Navigator.pop(context, "我是返回值"),
+                      },
                   child: new Text("返回"))
             ],
           ),
