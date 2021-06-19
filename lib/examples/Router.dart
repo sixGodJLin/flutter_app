@@ -1,4 +1,5 @@
 import 'package:english_words/english_words.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutterapp/examples/EventBus.dart';
 import 'package:flutterapp/seventh/DialogTest.dart';
@@ -175,6 +176,15 @@ class _MyCountState extends State<MyCount> {
                 Navigator.of(context).pushNamed("MyDialogTestRouter");
               },
               child: new Text('打开MyDialogTestRouter页面'),
+              textColor: Colors.blue,
+            ),
+            new RaisedButton(
+              onPressed: () {
+                Navigator.push(context, CupertinoPageRoute(
+                  builder: (context) => TipRoute(text: '左右滑动路由切换动画',),
+                ));
+              },
+              child: new Text('左右滑动路由切换动画'),
               textColor: Colors.blue,
             ),
             new RandomWord()
