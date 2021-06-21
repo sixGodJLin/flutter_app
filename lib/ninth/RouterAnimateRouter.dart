@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 
+// 自定义路由切换动画
 void main() {
   runApp(MyApp());
 }
